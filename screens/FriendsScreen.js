@@ -10,14 +10,14 @@ import {
   createAppContainer
 } from "react-navigation";
 
-export default class HomeScreen extends React.Component {
+export default class FriendsScreen extends React.Component {
   render(){
     return (
       <View style={styles.container}>
         <Text>Home Page</Text>
-        {/* <Button
-        title="Go To Player Page"
-        onPress={() => this.props.navigation.navigate('Links')} /> */}
+        <Button
+        title="Show Playlist"
+        onPress={() => console.log("show playlist") } />
       </View>
     );
   }

@@ -6,6 +6,8 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import FriendsScreen from "../screens/FriendsScreen";
+import NotificationsScreen from "../screens/NotificationsScreen";
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -67,10 +69,44 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+const FriendsStack = createStackNavigator(
+  {
+    Friends: FriendsScreen,
+  },
+  config
+);
+
+FriendsStack.navigationOptions = {
+  tabBarLabel: 'Friends',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  ),
+};
+
+FriendsStack.path = '';
+
+const NotificationsStack = createStackNavigator(
+  {
+    Notifications: NotificationsScreen,
+  },
+  config
+);
+
+NotificationsStack.navigationOptions = {
+  tabBarLabel: 'Notifications',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  ),
+};
+
+NotificationsStack.path = '';
+
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+  FriendsStack,
+  NotificationsStack,
 });
 
 tabNavigator.path = '';
