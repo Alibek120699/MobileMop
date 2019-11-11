@@ -1,27 +1,28 @@
-import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import React from "react";
+import {
+  View,
+  Text
+} from "react-native";
+import { createStackNavigator } from "react-navigation";
+import HomeScreen from "./HomeScreen";
 
-export default function LinksScreen() {
-  return (
-    <ScrollView style={styles.container}>
-      {/**
-       * Go ahead and delete ExpoLinksView and replace it with your content;
-       * we just wanted to provide you with some helpful links.
-       */}
-      <ExpoLinksView />
-    </ScrollView>
-  );
+class LinksScreen extends React.Component {
+  render(){
+    return (
+      <View>
+        <Text>Search Page</Text>
+      </View>
+    );
+  }
 }
 
-LinksScreen.navigationOptions = {
-  title: 'Links',
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Links: LinksScreen
   },
-});
+  {
+    initialRouteName: 'Home',
+  }
+);
+

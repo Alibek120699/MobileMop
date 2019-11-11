@@ -5,8 +5,8 @@ import {
 	ADD_TRACK,
 	REMOVE_TRACK
 } from "./actions/Actions";
-import { users } from "./users";
-import { tracks as allTracks } from "./tracks";
+import { users } from "./storage/users";
+import { tracks as allTracks } from "./storage/tracks";
 
 
 
@@ -16,4 +16,6 @@ const initialState = {
 	notifications = [],
 }
 
-export default function PlayerReducer(state=initialState, action)
+export default function PlayerReducer(state = initialState, action) {
+	switch(action.)
+}
