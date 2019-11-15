@@ -1,28 +1,31 @@
 import React from "react";
 import {
+  Button,
   View,
-  Text
+  Text,
+  StyleSheet,
 } from "react-native";
-import { createStackNavigator } from "react-navigation";
-import HomeScreen from "./HomeScreen";
+import {
+  createStackNavigator,
+  createAppContainer
+} from "react-navigation";
 
-class LinksScreen extends React.Component {
-  render(){
+export default class LinksScreen extends React.Component {
+  render() {
     return (
-      <View>
-        <Text>Search Page</Text>
+      <View style={styles.container}>
+        <Text>LinksScreen is changed</Text>
+        <Button
+          title="Show Playlist"
+          onPress={() => console.log("show playlist")} />
       </View>
     );
   }
 }
 
-const AppNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Links: LinksScreen
-  },
-  {
-    initialRouteName: 'Home',
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#4422ee'
   }
-);
-
+});
