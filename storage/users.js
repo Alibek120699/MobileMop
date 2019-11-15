@@ -1,4 +1,4 @@
-import { tracks as allTracks } from "tracks";
+import { tracks as allTracks } from "./tracks";
 const user1 = {
 	id: 1,
 	username: "Alisa Yandexeva",
