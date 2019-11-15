@@ -17,5 +17,7 @@ const initialState = {
 }
 
 export default function PlayerReducer(state = initialState, action) {
-	switch(action.)
+	switch(action.){
+		case asdfasdf;
+	}
 }
