@@ -5,7 +5,7 @@ import {
   StyleSheet
 } from "react-native";
 
-export default function SettingsScreen() {
+export default function PlayerScreen() {
   return (
     <View style={styles.container}>
       <Text>Notifications</Text>

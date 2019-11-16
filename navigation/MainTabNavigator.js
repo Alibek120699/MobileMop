@@ -4,8 +4,8 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import SearchScreen from '../screens/SearchScreen';
+import PlayerScreen from '../screens/PlayerScreen';
 import FriendsScreen from "../screens/FriendsScreen";
 import NotificationsScreen from "../screens/NotificationsScreen";
 
@@ -25,49 +25,46 @@ HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
+      isFontAwesome={false}
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
+      name='ios-home'
     />
   ),
 };
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const SearchStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Search: SearchScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+SearchStack.navigationOptions = {
+  tabBarLabel: 'Search',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon isFontAwesome={false} focused={focused} name='ios-search' />
   ),
 };
 
-LinksStack.path = '';
+SearchStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const PlayerStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Player: PlayerScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+PlayerStack.navigationOptions = {
+  tabBarLabel: 'Player',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon isFontAwesome={true} focused={focused} name='music' />
   ),
 };
 
-SettingsStack.path = '';
+PlayerStack.path = '';
 
 const FriendsStack = createStackNavigator(
   {
@@ -79,7 +76,7 @@ const FriendsStack = createStackNavigator(
 FriendsStack.navigationOptions = {
   tabBarLabel: 'Friends',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon isFontAwesome={true} focused={focused} name='users' />
   ),
 };
 
@@ -95,16 +92,16 @@ const NotificationsStack = createStackNavigator(
 NotificationsStack.navigationOptions = {
   tabBarLabel: 'Notifications',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon isFontAwesome={false} focused={focused} name='ios-notifications' />
   ),
 };
 
 NotificationsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
+  PlayerStack,
+  SearchStack,
   HomeStack,
-  LinksStack,
-  SettingsStack,
   FriendsStack,
   NotificationsStack,
 });

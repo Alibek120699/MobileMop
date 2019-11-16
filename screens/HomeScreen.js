@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  ScrollView,
   Button,
   View,
   Text,
@@ -10,6 +11,10 @@ import {
   createAppContainer
 } from "react-navigation";
 import { connect } from "react-redux";
+import { 
+  Ionicons,
+  FontAwesome
+} from '@expo/vector-icons';
 
 const mapStateToProps = (state) => {
   const { tracks } = state;
@@ -19,7 +24,7 @@ const mapStateToProps = (state) => {
 class HomeScreen extends React.Component {
   render(){
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text>Home Page</Text>
         {/* <Button
         title="Go To Player Page"
@@ -32,7 +37,19 @@ class HomeScreen extends React.Component {
                 onPress={() => console.log(t.artist)} />
             </View>)
         }
-      </View>
+        <Ionicons
+          name='md-person-add'
+          size={50}
+          style={{ marginBottom: -3 }}
+          onPress={() => alert('hello')}
+        />
+        <FontAwesome
+          name='users'
+          size={50}
+          style={{ marginBottom: -6 }}
+          onPress={() => alert('hello')}
+        />
+      </ScrollView>
     );
   }
 }
