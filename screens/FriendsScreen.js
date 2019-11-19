@@ -9,15 +9,26 @@ import {
   createStackNavigator,
   createAppContainer
 } from "react-navigation";
+import { connect } from "react-redux";
+ 
+const mapStateToProps = (state) => {
+  const { friends } = state;
+  return { friends };
+}
 
-export default class FriendsScreen extends React.Component {
+class FriendsScreen extends React.Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text>Home Page</Text>
-        <Button
-        title="Show Playlist"
-        onPress={() => console.log("show playlist") } />
+        {
+          this.props.friends.map(f => 
+            <View key={f.id}>
+              <Text
+                onPress={() => alert(f.id)}>{f.username}</Text>
+              <Text>hgkjhgkjh</Text>
+            </View>
+          )
+        }
       </View>
     );
   }
@@ -27,5 +38,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#4422ee'
+  },
+  friendsStyle: {
+    flex: 2,
+    backgroundColor: '#ffffff'
   }
 });
+
+export default connect(mapStateToProps)(FriendsScreen);
