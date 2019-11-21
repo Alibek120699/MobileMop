@@ -10,23 +10,29 @@ import {
   createAppContainer
 } from "react-navigation";
 import { connect } from "react-redux";
+import Friend from "../components/Friend";
+import { removeFriend } from "../actions/ActionCreators";
  
 const mapStateToProps = (state) => {
   const { friends } = state;
   return { friends };
 }
 
+const mapDispatchToProps = {
+  removeFriend
+}
+
 class FriendsScreen extends React.Component {
   render(){
+    console.log(this.props.friends);
     return (
       <View style={styles.container}>
         {
           this.props.friends.map(f => 
-            <View key={f.id}>
-              <Text
-                onPress={() => alert(f.id)}>{f.username}</Text>
-              <Text>hgkjhgkjh</Text>
-            </View>
+            <Friend key={f.id} 
+              username={f.username}
+              id={f.id}
+              remove={() => this.props.removeFriend(f)} />
           )
         }
       </View>
@@ -45,4 +51,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps)(FriendsScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(FriendsScreen);

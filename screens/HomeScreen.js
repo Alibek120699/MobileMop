@@ -26,9 +26,6 @@ class HomeScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <Text>Home Page</Text>
-        {/* <Button
-        title="Go To Player Page"
-        onPress={() => console.log(this.props)} /> */}
         {
           this.props.tracks.map((t) => 
             <View key={t.id} style={styles.trackstyle}>
