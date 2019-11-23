@@ -5,6 +5,7 @@ import {
   View,
   Text,
   StyleSheet,
+  Image
 } from "react-native";
 
 import { connect } from "react-redux";
@@ -23,13 +24,19 @@ class HomeScreen extends React.Component {
   render(){
     return (
       <ScrollView style={styles.container}>
-        <Text>Home Page</Text>
+        <View style={styles.breakLine}>
+          <Text style={{fontSize: 25}}>----------Home Page----------</Text>
+        </View>
+        
         {
           this.props.tracks.map((t) => 
             <View key={t.id} style={styles.trackstyle}>
-              <Text>{t.title}</Text>
-              <Button title="-"
-                onPress={() => this.props.removeTrack(t)} />
+              <Image source={{uri: t.imageSource}} style={styles.imageStyle} />
+              <Text style={styles.text}>{t.title}</Text>
+              <View style={styles.buttonStyle}>
+                <Button title="-"
+                  onPress={() => this.props.removeTrack(t)} />
+              </View>
             </View>)
         }
       </ScrollView>
@@ -38,15 +45,48 @@ class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  breakLine: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
   container: {
     flex: 1,
     backgroundColor: '#cafaee' 
   },
   trackstyle: {
     backgroundColor: '#fffcbb',
-    marginTop: '10%',
-    marginLeft: '5%',
-    marginRight: '15%'
+    marginTop: 7,
+    marginLeft: 26,
+    marginRight: 26,
+    height: 60,
+    justifyContent: 'center',
+    display: 'flex', 
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  buttonStyle: {
+    width: 40,
+    height: 40,
+    marginStart: 'auto',
+    marginRight: 15
+    
+  },
+  text: {
+      fontSize: 20,
+      marginTop: 0,
+      height: 26,
+      marginLeft: 26,
+      marginRight: 26,
+      alignItems: 'center',
+      justifyContent: 'center',
+  },
+  imageStyle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginLeft: 15,
   }
 });
 
