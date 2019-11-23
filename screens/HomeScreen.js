@@ -6,19 +6,17 @@ import {
   Text,
   StyleSheet,
 } from "react-native";
-import {
-  createStackNavigator,
-  createAppContainer
-} from "react-navigation";
+
 import { connect } from "react-redux";
-import { 
-  Ionicons,
-  FontAwesome
-} from '@expo/vector-icons';
+import { removeTrack } from "../actions/ActionCreators";
 
 const mapStateToProps = (state) => {
   const { tracks } = state;
   return { tracks };
+}
+
+const mapDispatchToProps = { 
+  removeTrack
 }
 
 class HomeScreen extends React.Component {
@@ -30,8 +28,8 @@ class HomeScreen extends React.Component {
           this.props.tracks.map((t) => 
             <View key={t.id} style={styles.trackstyle}>
               <Text>{t.title}</Text>
-              <Button title="add"
-                onPress={() => console.log(t.artist)} />
+              <Button title="-"
+                onPress={() => this.props.removeTrack(t)} />
             </View>)
         }
       </ScrollView>
@@ -52,4 +50,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
