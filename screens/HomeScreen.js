@@ -34,18 +34,6 @@ class HomeScreen extends React.Component {
                 onPress={() => console.log(t.artist)} />
             </View>)
         }
-        <Ionicons
-          name='md-person-add'
-          size={50}
-          style={{ marginBottom: -3 }}
-          onPress={() => alert('hello')}
-        />
-        <FontAwesome
-          name='users'
-          size={50}
-          style={{ marginBottom: -6 }}
-          onPress={() => alert('hello')}
-        />
       </ScrollView>
     );
   }
@@ -54,7 +42,7 @@ class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4422ee'
+    backgroundColor: '#cafaee' 
   },
   trackstyle: {
     backgroundColor: '#fffcbb',

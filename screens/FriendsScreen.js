@@ -28,8 +28,8 @@ class FriendsScreen extends React.Component {
     return (
       <View style={styles.container}>
         {
-          this.props.friends.map(f => 
-            <Friend key={f.id} 
+          this.props.friends.length>0 && this.props.friends.map(f => 
+            <Friend key={f.id}
               username={f.username}
               id={f.id}
               remove={() => this.props.removeFriend(f)} />

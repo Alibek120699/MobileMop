@@ -15,9 +15,9 @@ const initialState = {
 }
 
 export default function PlayerReducer(storeData = initialState, action) {
-	switch(ActionTypes){
+	switch(action.type){
 		case ActionTypes.LOAD_TRACK:
-			 return {...storeData, tracks: action.payload.data}
+			return {...storeData, [action.payload.dataType]: action.payload.data}
 		case ActionTypes.LOAD_FRIEND:
 			return {...storeData, friends: action.payload.data}
 		case ActionTypes.LOAD_NOTIFICATION:
@@ -25,25 +25,16 @@ export default function PlayerReducer(storeData = initialState, action) {
 		case ActionTypes.ADD_FRIEND:
 			return {...storeData, friends: [...storeData.friends, action.payload.friend]}
 		case ActionTypes.ADD_TRACK:
-			return {...storeData, tracks: [storeData.tracks, action.payload.track]}
+			return {...storeData, tracks: [...storeData.tracks, action.payload.track]}
 		case ActionTypes.REMOVE_FRIEND:
-			return {...storeData, friends: [storeData.friends.filter(f => 
-				f.id !== action.payload.friend.id)]}
+			return {...storeData, friends: storeData.friends.filter(f => 
+				f.id !== action.payload.friend.id)}
 		case ActionTypes.REMOVE_TRACK:
-			return {...storeData, tracks: [storeData.tracks.filter(t =>
-				t.id !== action.payload.track.id)]}
-		// case ActionTypes.READ_NOTIFICATION:
-		// 	return {...storeData, notifications: [storeData.notifications.filter(n =>
-		// 		n.id !== action.payload.notification.id)]}
+			return {...storeData, tracks: storeData.tracks.filter(t =>
+				t.id !== action.payload.track.id)}
 		case ActionTypes.READ_NOTIFICATION:
-			return {
-				...storeData,
-				notifications: [{
-					id: 13,
-					message: "ot works!",
-					isRead: true
-				}]
-			}
+			return {...storeData, notifications: storeData.notifications.filter(n =>
+				n.id !== action.payload.notification.id)}
 		default:
 			return storeData || {}
 	}

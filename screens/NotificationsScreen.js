@@ -28,7 +28,7 @@ class NotificationsScreen extends React.Component {
       <View style={styles.container}>
         <Text>Notifications</Text>
         {
-          this.props.notifications.map(n => 
+          this.props.notifications.length>0 && this.props.notifications.map(n => 
             <View key={n.id}>
               <Text>{n.message}</Text>
               <Text>{n.isRead}</Text>
@@ -43,7 +43,7 @@ class NotificationsScreen extends React.Component {
     );
   }
 
-  componentDidUpdate(){
+  componentDidMount(){
     this.props.loadNotifications();
   }
 }
