@@ -32,7 +32,7 @@ class FriendsScreen extends React.Component {
               <Friend
                 username={f.username}
                 remove={() => this.props.removeFriend(f)} />
-              <View style={{marginBottom: 10}}>
+              <View style={styles.btnStyle}>
                 <Button
                   title="Go to Profile"
                   onPress={ 
@@ -69,6 +69,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
+  btnStyle: {
+    marginBottom: 20,
+    marginRight: 60,
+    marginLeft: 60,
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendsScreen);
