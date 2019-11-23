@@ -13,10 +13,7 @@ import { users } from '../storage/users';
 import { tracks } from '../storage/tracks';
 import { addFriend, addTrack} from '../actions/ActionCreators';
 
-// const mapStateToProps = (state) => {
-//   const { tracks, users } = state;
-//   return { tracks, users };
-// }
+
 
 const mapDispatchToProps = {
   addFriend, addTrack
