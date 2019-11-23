@@ -14,7 +14,7 @@ export default class FriendProfile extends React.Component {
         const ava = navigation.getParam('ava', 'No Ava');
 
         return (
-            <View>
+            <View style={styles.container}>
                 <Image source={{uri: ava}} style={styles.ava} />
                 <Text>{userName}</Text>
                 <Button 
@@ -26,9 +26,14 @@ export default class FriendProfile extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: "#cafaee",
+        flex: 1
+    },
     ava: {
         width: 200,
         height: 200,
-        borderRadius: 100
+        borderRadius: 100,
+        margin: "auto"
     }
 })
