@@ -26,14 +26,18 @@ export default function Friend(props){
 
 const styles = StyleSheet.create({
     friendStyle: {
-        backgroundColor: "aqua",
+        backgroundColor: "#fffcbb",
         display: 'flex',
         flexDirection: 'row',
+        marginRight: 26,
+        marginLeft: 26,
     },
     btnStyle: {
         marginStart: 'auto',
+        marginRight: 15,
     },
     userStyle: {
         fontSize: 25,
+        marginLeft: 15,
     }
 })
