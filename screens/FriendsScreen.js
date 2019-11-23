@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  ScrollView,
   Button,
   View,
   Text,
@@ -20,31 +21,35 @@ const mapDispatchToProps = {
 
 class FriendsScreen extends React.Component {
   render(){
-    console.log(this.props.friends);
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
+        <View style={styles.breakLine}>
+          <Text style={{fontSize: 25}}>----------Tracks----------</Text>
+        </View>
         {
           this.props.friends.length>0 && this.props.friends.map(f => 
             <View key={f.id}>
               <Friend
                 username={f.username}
-                id={f.id}
                 remove={() => this.props.removeFriend(f)} />
-              <Button
-                title="Go to Profile"
-                onPress={ 
-                  () => {
-                    this.props.navigation.navigate('Profile', {
-                      userName: f.username,
-                      ava: f.ava
-                    });
-                  } 
-                }
-              />
+              <View style={{marginBottom: 10}}>
+                <Button
+                  title="Go to Profile"
+                  onPress={ 
+                    () => {
+                      this.props.navigation.navigate('Profile', {
+                        userName: f.username,
+                        ava: f.ava,
+                        tracks: f.tracks
+                      });
+                    } 
+                  }
+                />
+              </View>
             </View>
           )
         }
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -57,7 +62,12 @@ const styles = StyleSheet.create({
   friendsStyle: {
     flex: 2,
     backgroundColor: '#ffffff'
-  }
+  },
+  breakLine: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendsScreen);

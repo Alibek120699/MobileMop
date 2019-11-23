@@ -8,23 +8,32 @@ import {
 
 export default function Friend(props){
     const {
-        id,
         username,
     } = props;
     console.log(props.remove);
     return (
         <View style={styles.friendStyle}>
-            <Text>{username}</Text>
-            <Text>{id}</Text>
-            <Button title="-"
-                onPress={() => props.remove()} />
+            <Text style={styles.userStyle}>{username}</Text>
+            <View style={styles.btnStyle}>
+                <Button
+                    color='steelblue' 
+                    title="X"
+                    onPress={() => props.remove()} />
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     friendStyle: {
-        margin: '2%',
         backgroundColor: "aqua",
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    btnStyle: {
+        marginStart: 'auto',
+    },
+    userStyle: {
+        fontSize: 25,
     }
 })
