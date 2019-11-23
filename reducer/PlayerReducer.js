@@ -9,7 +9,7 @@ import { notifications } from "../storage/notifications";
 
 
 const initialState = {
-	friends: users,
+	friends: users.slice(0, 3),
 	tracks: allTracks.slice(3, 8),
 	notifications,
 }
@@ -23,9 +23,15 @@ export default function PlayerReducer(storeData = initialState, action) {
 		case ActionTypes.LOAD_NOTIFICATION:
 			return {...storeData, notification: action.payload.data}
 		case ActionTypes.ADD_FRIEND:
-			return {...storeData, friends: [...storeData.friends, action.payload.friend]}
+			const isExisting = storeData.friends.find(f => f.id === action.payload.friend.id)
+			if(!isExisting)
+				return {...storeData, friends: [...storeData.friends, action.payload.friend]}
+			return storeData
 		case ActionTypes.ADD_TRACK:
-			return {...storeData, tracks: [...storeData.tracks, action.payload.track]}
+			const existing = storeData.tracks.find(t => t.id === action.payload.track.id)
+			if(!existing)
+				return {...storeData, tracks: [...storeData.tracks, action.payload.track]}
+			return storeData
 		case ActionTypes.REMOVE_FRIEND:
 			return {...storeData, friends: storeData.friends.filter(f => 
 				f.id !== action.payload.friend.id)}

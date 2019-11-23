@@ -8,6 +8,7 @@ import SearchScreen from '../screens/SearchScreen';
 import PlayerScreen from '../screens/PlayerScreen';
 import FriendsScreen from "../screens/FriendsScreen";
 import NotificationsScreen from "../screens/NotificationsScreen";
+import FriendProfile from "../screens/FriendProfile";
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -69,6 +70,7 @@ PlayerStack.path = '';
 const FriendsStack = createStackNavigator(
   {
     Friends: FriendsScreen,
+    Profile: FriendProfile,
   },
   config
 );

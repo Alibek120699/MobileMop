@@ -2,14 +2,44 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  Button,
+  ScrollView,
 } from "react-native";
+import { connect } from "react-redux";
+import {
+  loadTracks,
+  addTrack
+} from "../actions/ActionCreators";
 
-export default function PlayerScreen() {
+const mapStateToProps = state => {
+  const {tracks} = state;
+  return {tracks};
+}
+
+const mapDispatchToProps = {
+  loadTracks, addTrack
+}
+
+function PlayerScreen(props) {
+
+  props.loadTracks();
+
   return (
-    <View style={styles.container}>
-      <Text>Notifications</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <Text>PlayerScreen</Text>
+      {
+        props.tracks.length>0 && props.tracks.map(t => 
+          <View key={t.id}>
+            <Text>{t.title}</Text>
+            <Text>{t.artist}</Text>
+            <Button 
+              title="add"
+              onPress={() => addTrack(t)} />
+          </View>
+        )
+      }
+    </ScrollView>
   );
 }
 
@@ -19,3 +49,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#4422ee'
   }
 });
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerScreen);

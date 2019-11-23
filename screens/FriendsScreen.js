@@ -5,10 +5,6 @@ import {
   Text,
   StyleSheet,
 } from "react-native";
-import {
-  createStackNavigator,
-  createAppContainer
-} from "react-navigation";
 import { connect } from "react-redux";
 import Friend from "../components/Friend";
 import { removeFriend } from "../actions/ActionCreators";
@@ -29,10 +25,23 @@ class FriendsScreen extends React.Component {
       <View style={styles.container}>
         {
           this.props.friends.length>0 && this.props.friends.map(f => 
-            <Friend key={f.id}
-              username={f.username}
-              id={f.id}
-              remove={() => this.props.removeFriend(f)} />
+            <View key={f.id}>
+              <Friend
+                username={f.username}
+                id={f.id}
+                remove={() => this.props.removeFriend(f)} />
+              <Button
+                title="Go to Profile"
+                onPress={ 
+                  () => {
+                    this.props.navigation.navigate('Profile', {
+                      userName: f.username,
+                      ava: f.ava
+                    });
+                  } 
+                }
+              />
+            </View>
           )
         }
       </View>
