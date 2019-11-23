@@ -5,7 +5,7 @@ export const tracks = [
         title: 'In the End',
         artist: 'Linkin Park',
         source: 'Moppers',
-        uri: '../assets/musics/Muse - New Born.mp3',
+        uri: 'https://sefon.fm/mp3/30838-arctic-monkeys-i-wanna-be-yours/',
         imageSource: 'https://i2.wp.com/song-story.ru/wp-content/uploads/2019/02/linkin_park_in_the_end.jpg?fit=350%2C350&ssl=1'
     },
     {

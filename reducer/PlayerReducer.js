@@ -3,14 +3,14 @@ import {
 	ActionTypes
 } from "../actions/ActionTypes";
 import { users } from "../storage/users";
-import { tracks as allTracks } from "../storage/tracks";
+import { tracks } from "../storage/tracks";
 import { notifications } from "../storage/notifications";
 
 
 
 const initialState = {
 	friends: users.slice(0, 3),
-	tracks: allTracks.slice(3, 8),
+	tracks: tracks.slice(3, 8),
 	notifications,
 }
 
